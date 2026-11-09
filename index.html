@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixus Autohuolto Espoo | Car repair and parts, Kilo</title>
+<meta name="description" content="Fixus Autohuolto in Kilo, Espoo. General car repair, brakes, exhaust, diagnostics, tires, air conditioning and parts over the counter. Palomiehentie 6, 02750 Espoo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --slate:#1e293b;
+  --ink:#0f172a;
+  --steel:#64748b;
+  --line:#e2e8f0;
+  --line-dark:#334155;
+  --paper:#ffffff;
+  --wash:#f8fafc;
+  --accent:#ea580c;
+  --accent-dark:#c2410c;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --disp:"Oswald",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--slate);
+  background:var(--paper);
+  line-height:1.55;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono)}
+
+/* ---------- ticker strip ---------- */
+.ticker{
+  background:var(--ink);
+  color:#cbd5e1;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.02em;
+  border-bottom:3px solid var(--accent);
+}
+.ticker .wrap{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  min-height:38px;
+  padding-top:6px;
+  padding-bottom:6px;
+  flex-wrap:wrap;
+}
+.ticker .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#22c55e;display:inline-block;
+  margin-right:7px;vertical-align:1px;
+}
+.ticker .dot.closed{background:#ef4444}
+.ticker a{color:#fff;text-decoration:none}
+.ticker a:hover{color:var(--accent)}
+.ticker .spacer{flex:1}
+@media(max-width:640px){
+  .ticker .area{display:none}
+}
+
+/* ---------- header ---------- */
+.site-head{
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.site-head .wrap{
+  display:flex;align-items:center;gap:18px;
+  padding-top:14px;padding-bottom:14px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{
+  width:42px;height:42px;background:var(--accent);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  border-radius:6px;flex:none;
+}
+.brand-text strong{
+  display:block;
+  font-family:var(--disp);
+  font-weight:700;font-size:21px;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink);line-height:1.1;
+}
+.brand-text span{
+  font-family:var(--mono);font-size:11px;
+  color:var(--steel);letter-spacing:.08em;text-transform:uppercase;
+}
+.main-nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+.main-nav a{
+  text-decoration:none;font-size:14px;font-weight:600;
+  color:var(--slate);padding:8px 12px;border-radius:6px;
+}
+.main-nav a:hover{background:var(--wash);color:var(--ink)}
+.main-nav a.nav-call{
+  background:var(--slate);color:#fff;font-family:var(--mono);font-size:13px;
+}
+.main-nav a.nav-call:hover{background:var(--accent)}
+@media(max-width:820px){
+  .main-nav a:not(.nav-call){display:none}
+}
+
+/* ---------- intro ---------- */
+.intro{
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.intro .wrap{
+  padding-top:52px;padding-bottom:48px;
+  display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:end;
+}
+.kicker{
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.kicker::before{content:"";width:26px;height:2px;background:var(--accent)}
+.intro h1{
+  font-family:var(--disp);font-weight:700;
+  font-size:clamp(34px,5vw,54px);
+  line-height:1.05;letter-spacing:.01em;
+  text-transform:uppercase;color:var(--ink);
+  max-width:16ch;
+}
+.intro .lead{
+  margin-top:18px;font-size:17px;color:#475569;max-width:56ch;
+}
+.intro .lead strong{color:var(--ink)}
+.intro-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-weight:600;font-size:15px;text-decoration:none;
+  padding:12px 20px;border-radius:6px;border:1px solid transparent;
+  cursor:pointer;
+}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-dark)}
+.btn-line{border-color:var(--slate);color:var(--slate);background:transparent}
+.btn-line:hover{background:var(--slate);color:#fff}
+.intro-facts{
+  border:1px solid var(--line);border-radius:6px;
+  font-family:var(--mono);font-size:13px;
+}
+.intro-facts div{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:11px 16px;border-bottom:1px solid var(--line);
+}
+.intro-facts div:last-child{border-bottom:none}
+.intro-facts dt{color:var(--steel)}
+.intro-facts dd{color:var(--ink);font-weight:600;text-align:right}
+.intro-facts dd .open{color:#15803d}
+.intro-facts dd .closed{color:#b91c1c}
+@media(max-width:860px){
+  .intro .wrap{grid-template-columns:1fr;padding-top:38px;padding-bottom:36px}
+}
+
+/* ---------- section headings ---------- */
+.section-head .wrap{
+  padding-top:44px;padding-bottom:22px;
+  display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-family:var(--disp);font-weight:700;font-size:30px;
+  text-transform:uppercase;letter-spacing:.02em;color:var(--ink);
+}
+.section-head .note{font-family:var(--mono);font-size:12.5px;color:var(--steel)}
+
+/* ---------- service grid ---------- */
+.svc-section{border-bottom:1px solid var(--line);padding-bottom:56px}
+.svc-grid{
+  border:1px solid var(--line-dark);
+  border-radius:6px;overflow:hidden;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--line);
+  gap:1px;
+}
+.svc{
+  background:var(--paper);
+  padding:26px 24px 22px;
+  display:flex;flex-direction:column;gap:10px;
+  min-height:210px;
+  position:relative;
+}
+.svc:hover{background:var(--wash)}
+.svc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.svc-num{
+  font-family:var(--mono);font-size:12px;color:var(--steel);
+  letter-spacing:.1em;
+}
+.svc-num::after{
+  content:"";display:block;width:22px;height:2px;
+  background:var(--accent);margin-top:6px;
+}
+.svc-icon{width:30px;height:30px;color:var(--slate);flex:none}
+.svc h3{
+  font-family:var(--disp);font-weight:600;font-size:20px;
+  text-transform:uppercase;letter-spacing:.02em;color:var(--ink);
+}
+.svc p{font-size:14px;color:#475569;flex:1}
+.svc-foot{
+  display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid var(--line);padding-top:12px;gap:10px;
+}
+.svc-price{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--ink)}
+.svc-price small{font-weight:400;color:var(--steel);font-size:11.5px}
+.svc-tag{
+  font-family:var(--mono);font-size:11px;color:var(--steel);
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.svc.wide{grid-column:span 3;background:var(--slate);color:#cbd5e1}
+.svc.wide:hover{background:#263349}
+.svc.wide h3{color:#fff}
+.svc.wide p{color:#94a3b8}
+.svc.wide .svc-num{color:#64748b}
+.svc.wide .svc-foot{border-top-color:var(--line-dark)}
+.svc.wide .svc-price{color:#fff}
+.svc.wide .svc-price small{color:#94a3b8}
+.svc.wide .svc-tag{color:#94a3b8}
+.svc.wide .svc-icon{color:var(--accent)}
+@media(max-width:900px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc.wide{grid-column:span 2}
+}
+@media(max-width:560px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc.wide{grid-column:span 1}
+  .svc{min-height:0}
+}
+
+/* ---------- wide photo ---------- */
+.photo-strip{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--ink);
+}
+.photo-strip figure{
+  max-width:1120px;margin:0 auto;position:relative;
+  background:var(--slate);
+}
+.photo-strip img{
+  width:100%;height:clamp(240px,42vw,460px);
+  object-fit:cover;
+}
+.photo-strip figcaption{
+  position:absolute;left:0;bottom:0;
+  background:var(--ink);color:#cbd5e1;
+  font-family:var(--mono);font-size:12px;
+  padding:9px 16px;letter-spacing:.04em;
+  border-top-right-radius:6px;
+}
+
+/* ---------- parts counter ---------- */
+.parts{background:var(--wash);border-bottom:1px solid var(--line)}
+.parts .wrap{
+  padding-top:52px;padding-bottom:56px;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:44px;
+}
+.parts h2{
+  font-family:var(--disp);font-weight:700;font-size:30px;
+  text-transform:uppercase;color:var(--ink);margin-bottom:16px;
+}
+.parts p{color:#475569;font-size:15.5px;margin-bottom:14px;max-width:58ch}
+.parts p strong{color:var(--ink)}
+.parts-list{
+  list-style:none;margin-top:8px;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:var(--paper);
+}
+.parts-list li{
+  padding:12px 16px;font-size:14px;color:var(--slate);
+  border-bottom:1px solid var(--line);
+  display:flex;gap:10px;align-items:baseline;
+}
+.parts-list li:nth-child(odd){border-right:1px solid var(--line)}
+.parts-list li:nth-last-child(-n+2){border-bottom:none}
+.parts-list li::before{
+  content:"";width:7px;height:7px;background:var(--accent);
+  flex:none;transform:translateY(-1px);
+}
+.chain-card{
+  background:var(--slate);color:#cbd5e1;
+  border-radius:6px;padding:30px 28px;
+  display:flex;flex-direction:column;gap:14px;
+  align-self:start;
+}
+.chain-card h3{
+  font-family:var(--disp);font-weight:600;font-size:21px;
+  text-transform:uppercase;color:#fff;letter-spacing:.02em;
+}
+.chain-card p{font-size:14.5px;color:#94a3b8}
+.chain-card .chain-stat{
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:13px;
+  border-top:1px solid var(--line-dark);padding-top:12px;
+}
+.chain-card .chain-stat b{color:#fff}
+.chain-card .chain-stat b.accent{color:var(--accent)}
+@media(max-width:860px){
+  .parts .wrap{grid-template-columns:1fr}
+  .parts-list{grid-template-columns:1fr}
+  .parts-list li:nth-child(odd){border-right:none}
+  .parts-list li:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+  .parts-list li:last-child{border-bottom:none}
+}
+
+/* ---------- booking + address ---------- */
+.book{padding-top:52px;padding-bottom:64px}
+.book .wrap{
+  display:grid;grid-template-columns:1.25fr 1fr;gap:0;
+  border:1px solid var(--line-dark);border-radius:6px;overflow:hidden;
+}
+.book-form{background:var(--paper);padding:34px 32px}
+.book-form h2{
+  font-family:var(--disp);font-weight:700;font-size:26px;
+  text-transform:uppercase;color:var(--ink);margin-bottom:8px;
+}
+.book-form .sub{font-size:14px;color:var(--steel);margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
+  margin-bottom:6px;
+}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid var(--line);border-radius:6px;
+  padding:11px 13px;font-size:15px;font-family:var(--body);
+  color:var(--ink);background:var(--paper);
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent);
+}
+.field textarea{resize:vertical;min-height:104px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-note{font-family:var(--mono);font-size:12px;color:var(--steel);margin-top:12px}
+.form-ok{
+  display:none;margin-top:18px;
+  border:1px solid #16a34a;background:#f0fdf4;color:#14532d;
+  border-radius:6px;padding:16px 18px;font-size:14.5px;
+}
+.form-ok.show{display:block}
+.form-ok b{font-family:var(--mono)}
+.addr-card{
+  background:var(--ink);color:#cbd5e1;
+  padding:34px 32px;display:flex;flex-direction:column;gap:0;
+}
+.addr-card h2{
+  font-family:var(--disp);font-weight:700;font-size:22px;
+  text-transform:uppercase;color:#fff;letter-spacing:.02em;
+  margin-bottom:18px;
+}
+.addr-block{font-size:15px;line-height:1.7;margin-bottom:18px}
+.addr-block .mono{font-size:14px}
+.addr-card a{color:#fff}
+.addr-rows{font-family:var(--mono);font-size:13px}
+.addr-rows .row{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:10px 0;border-top:1px solid var(--line-dark);
+}
+.addr-rows .row span:first-child{color:#94a3b8}
+.addr-rows .row span:last-child{color:#e2e8f0;font-weight:600;text-align:right}
+.btn-dir{
+  margin-top:auto;display:inline-flex;align-items:center;gap:9px;
+  background:var(--accent);color:#fff;text-decoration:none;
+  font-weight:600;font-size:14.5px;padding:12px 18px;border-radius:6px;
+  align-self:flex-start;
+}
+.btn-dir:hover{background:var(--accent-dark)}
+.addr-card .call-hint{font-family:var(--mono);font-size:12px;color:#64748b;margin-top:14px}
+@media(max-width:860px){
+  .book .wrap{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .book-form,.addr-card{padding:26px 22px}
+}
+
+/* ---------- footer ---------- */
+footer{
+  background:var(--ink);color:#94a3b8;
+  border-top:3px solid var(--accent);
+  padding:34px 0 40px;font-size:14px;
+}
+footer .wrap{
+  display:flex;flex-wrap:wrap;gap:14px 34px;align-items:baseline;
+}
+footer strong{
+  font-family:var(--disp);color:#fff;text-transform:uppercase;
+  letter-spacing:.04em;font-size:16px;font-weight:600;
+}
+footer .mono{font-size:13px}
+footer a{color:#e2e8f0;text-decoration:none}
+footer a:hover{color:var(--accent)}
+footer .demo{margin-left:auto;font-family:var(--mono);font-size:12px;color:#64748b}
+@media(max-width:640px){
+  footer .demo{margin-left:0;width:100%}
+}
+
+/* ---------- mobile call bar ---------- */
+.call-bar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--accent);color:#fff;text-decoration:none;
+  text-align:center;font-weight:700;font-size:16px;
+  padding:14px 16px calc(14px + env(safe-area-inset-bottom));
+  align-items:center;justify-content:center;gap:10px;
+}
+.call-bar .mono{font-size:15px}
+@media(max-width:820px){
+  .call-bar{display:flex}
+  body{padding-bottom:56px}
+}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ticker strip -->
+<div class="ticker">
+  <div class="wrap">
+    <span id="tickerStatus"><span class="dot" id="tickerDot"></span><span id="tickerText">Checking opening hours...</span></span>
+    <span class="mono">Mon&ndash;Fri 08:00&ndash;17:00</span>
+    <span class="area">Palomiehentie 6, 02750 Espoo</span>
+    <span class="spacer"></span>
+    <a class="mono" href="tel:+358442399904">+358 44 2399904</a>
+  </div>
+</div>
+
+<!-- header -->
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>Fixus Autohuolto</strong>
+        <span>Kilo &middot; Espoo</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#services">Services</a>
+      <a href="#parts">Parts counter</a>
+      <a href="#book">Book a time</a>
+      <a class="nav-call" href="tel:+358442399904">+358 44 2399904</a>
+    </nav>
+  </div>
+</header>
+
+<!-- intro -->
+<section class="intro" id="top">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Car repair &amp; parts &middot; Kilo, Espoo</p>
+      <h1>Local workshop. National chain behind it.</h1>
+      <p class="lead">
+        Fixus Autohuolto in Kilo handles everyday car care for drivers in
+        <strong>Kilo, Myllym&auml;m&auml;ki and northern Espoo</strong>: maintenance, brakes,
+        exhaust, diagnostics, tires and air conditioning. We are part of the
+        nationwide <strong>Fixus chain</strong>, so spare parts arrive fast and most
+        common items are on the shelf, over the counter.
+      </p>
+      <div class="intro-cta">
+        <a class="btn btn-accent" href="#book">Book a service</a>
+        <a class="btn btn-line" href="#services">See services &amp; prices</a>
+      </div>
+    </div>
+    <dl class="intro-facts">
+      <div><dt>Workshop</dt><dd>Palomiehentie 6</dd></div>
+      <div><dt>Hours</dt><dd class="mono">Mon&ndash;Fri 08:00&ndash;17:00</dd></div>
+      <div><dt>Weekend</dt><dd class="mono">Closed</dd></div>
+      <div><dt>Phone</dt><dd class="mono">+358 44 2399904</dd></div>
+      <div><dt>Status now</dt><dd class="mono" id="factStatus">&mdash;</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- services grid -->
+<div class="section-head" id="services">
+  <div class="wrap">
+    <h2>Services &amp; counter prices</h2>
+    <p class="note">All prices from, incl. VAT 25.5%. Final quote confirmed before work starts.</p>
+  </div>
+</div>
+<section class="svc-section">
+  <div class="wrap">
+    <div class="svc-grid">
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-num">01</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg>
+        </div>
+        <h3>Maintenance service</h3>
+        <p>Oil and filter change, fluids top-up, brake and light check. Service book stamped, manufacturer schedule followed.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;149</span>
+          <span class="svc-tag">ca. 1.5 h</span>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-num">02</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M17.7 6.3l-2.1 2.1M8.4 15.6l-2.1 2.1"/></svg>
+        </div>
+        <h3>Brakes</h3>
+        <p>Pads and discs per axle, caliper service, brake fluid change. Squeal or pulsing pedal: bring it in before it gets expensive.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;129</span>
+          <span class="svc-tag">per axle</span>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-num">03</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h8a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H9"/><path d="M3 6h12"/><path d="M18 6h3v12h-3"/></svg>
+        </div>
+        <h3>Exhaust</h3>
+        <p>Leaks, broken hangers, corroded pipes, muffler and catalytic converter replacement. Welding repairs where it makes sense.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;89</span>
+          <span class="svc-tag">repair</span>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-num">04</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 9h4M7 12.5h7"/><path d="M8 21l2-4M16 21l-2-4"/></svg>
+        </div>
+        <h3>Diagnostics</h3>
+        <p>Fault code readout and live-data check for engine, ABS, airbag and more. You get a plain-language answer, not just codes.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;49</span>
+          <span class="svc-tag">readout</span>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-num">05</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 8V3M12 21v-5M8 12H3M21 12h-5"/></svg>
+        </div>
+        <h3>Tires</h3>
+        <p>Seasonal change, balancing and rotation. New tires ordered through the Fixus chain, usually next working day.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;29</span>
+          <span class="svc-tag">swap, 4 pcs</span>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-num">06</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7l14 10M19 7L5 17M12 3l-2 2M12 3l2 2M12 21l-2-2M12 21l2-2M5 7l0 3M5 7l3 0M19 17l0-3M19 17l-3 0M19 7l-3 0M19 7l0 3M5 17l3 0M5 17l0-3"/></svg>
+        </div>
+        <h3>Air conditioning</h3>
+        <p>Refrigerant service, leak check and cabin filter change. Weak cooling in summer usually means a service, not a new compressor.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;89</span>
+          <span class="svc-tag">service</span>
+        </div>
+      </article>
+
+      <article class="svc wide reveal">
+        <div class="svc-top">
+          <span class="svc-num">07</span>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        </div>
+        <h3>Parts sales, over the counter</h3>
+        <p>Bulbs, wipers, batteries, filters, brake parts and fluids sold straight over the counter. If it is not on the shelf, the Fixus network warehouse delivers most items to Kilo within one working day. Bring your registration number and we find the right part.</p>
+        <div class="svc-foot">
+          <span class="svc-price"><small>from</small> &euro;5</span>
+          <span class="svc-tag">Mon&ndash;Fri 08:00&ndash;17:00</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- wide workshop photo -->
+<section class="photo-strip">
+  <figure>
+    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1600&q=80&auto=format&fit=crop"
+         alt="Workshop workbench with mechanic's tools laid out"
+         loading="lazy"
+         onerror="this.style.display='none'">
+    <figcaption>FIXUS AUTOHUOLTO &middot; WORKSHOP, PALOMIEHENTIE 6</figcaption>
+  </figure>
+</section>
+
+<!-- parts counter / chain -->
+<section class="parts" id="parts">
+  <div class="wrap">
+    <div>
+      <h2>The parts counter</h2>
+      <p>
+        Not every job needs a lift. If you do your own small repairs, walk in with your
+        registration number and we will find the right part at the counter.
+        <strong>Common items are in stock</strong>; the rest comes through the Fixus
+        central warehouse, usually the next working day.
+      </p>
+      <ul class="parts-list">
+        <li>Bulbs and fuses</li>
+        <li>Wiper blades</li>
+        <li>Batteries</li>
+        <li>Oils and fluids</li>
+        <li>Filters</li>
+        <li>Brake pads and discs</li>
+        <li>Spark plugs</li>
+        <li>Tire valves and accessories</li>
+      </ul>
+    </div>
+    <aside class="chain-card reveal">
+      <h3>Backed by the Fixus chain</h3>
+      <p>
+        We are an independent local workshop in Kilo, and part of the nationwide
+        Fixus network. That means chain purchasing prices, a large shared parts
+        warehouse and a service standard that follows the manufacturer schedule.
+      </p>
+      <div class="chain-stat"><span>Locations nationwide</span><b>100+</b></div>
+      <div class="chain-stat"><span>Parts delivery</span><b class="accent">usually 1 day</b></div>
+      <div class="chain-stat"><span>Warranty</span><b>parts &amp; labor</b></div>
+      <div class="chain-stat"><span>Area served</span><b>Kilo, Myllym&auml;ki, N-Espoo</b></div>
+    </aside>
+  </div>
+</section>
+
+<!-- booking + address -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="book-form">
+      <h2>Book a time</h2>
+      <p class="sub">Leave your details and we call you back during opening hours to confirm the time. For anything urgent, call the workshop directly.</p>
+      <form id="bookForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="fName">Name</label>
+            <input type="text" id="fName" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="fContact">Phone or email</label>
+            <input type="text" id="fContact" name="contact" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="fService">Service needed</label>
+          <select id="fService" name="service">
+            <option>Maintenance service</option>
+            <option>Brakes</option>
+            <option>Exhaust</option>
+            <option>Diagnostics</option>
+            <option>Tires</option>
+            <option>Air conditioning</option>
+            <option>Parts / other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fMsg">Message</label>
+          <textarea id="fMsg" name="message" placeholder="Car model, registration number, what is wrong or what you need." required></textarea>
+        </div>
+        <button class="btn btn-accent" type="submit">Send booking request</button>
+        <p class="form-note">No online payment. We confirm every booking by phone.</p>
+        <div class="form-ok" id="formOk" role="status"></div>
+      </form>
+    </div>
+    <aside class="addr-card">
+      <h2>Find the workshop</h2>
+      <address class="addr-block" style="font-style:normal">
+        <strong style="color:#fff">Fixus Autohuolto</strong><br>
+        <span class="mono">Palomiehentie 6<br>02750 Espoo</span><br>
+        Kilo / Myllym&auml;ki area
+      </address>
+      <div class="addr-rows">
+        <div class="row"><span>Phone</span><span><a href="tel:+358442399904">+358 44 2399904</a></span></div>
+        <div class="row"><span>Mon&ndash;Fri</span><span>08:00&ndash;17:00</span></div>
+        <div class="row"><span>Sat&ndash;Sun</span><span>Closed</span></div>
+        <div class="row"><span>Status now</span><span id="addrStatus">&mdash;</span></div>
+      </div>
+      <a class="btn-dir" href="https://www.google.com/maps/place/Fixus+Autohuolto/@60.2076322,24.7426618" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Get directions
+      </a>
+      <p class="call-hint">Typical workshop hours. Call ahead for parts pickups near closing time.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <strong>Fixus Autohuolto</strong>
+    <span class="mono">Palomiehentie 6, 02750 Espoo</span>
+    <a class="mono" href="tel:+358442399904">+358 44 2399904</a>
+    <span class="demo">Demo website</span>
+  </div>
+</footer>
+
+<!-- mobile call bar -->
+<a class="call-bar" href="tel:+358442399904">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.6 1.9z"/></svg>
+  <span>Call the workshop</span>
+  <span class="mono">+358 44 2399904</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- open-now status (Mon-Fri 08:00-17:00) ---- */
+  function openStatus(){
+    var now = new Date();
+    var day = now.getDay();           // 0 Sun ... 6 Sat
+    var mins = now.getHours()*60 + now.getMinutes();
+    var isWeekday = day >= 1 && day <= 5;
+    var open = isWeekday && mins >= 480 && mins < 1020; // 08:00-17:00
+
+    var dot = document.getElementById("tickerDot");
+    var tText = document.getElementById("tickerText");
+    var fact = document.getElementById("factStatus");
+    var addr = document.getElementById("addrStatus");
+
+    if(open){
+      if(dot){ dot.classList.remove("closed"); }
+      if(tText){ tText.textContent = "Open now, closes 17:00"; }
+      if(fact){ fact.innerHTML = '<span class="open">Open</span>, closes 17:00'; }
+      if(addr){ addr.textContent = "Open, closes 17:00"; }
+    }else{
+      if(dot){ dot.classList.add("closed"); }
+      var next;
+      if(isWeekday && mins < 480){
+        next = "opens today 08:00";
+      }else if(day === 5 && mins >= 1020){
+        next = "opens Mon 08:00";
+      }else if(day === 6){
+        next = "opens Mon 08:00";
+      }else if(day === 0){
+        next = "opens Mon 08:00";
+      }else{
+        next = "opens tomorrow 08:00";
+      }
+      if(tText){ tText.textContent = "Closed now, " + next; }
+      if(fact){ fact.innerHTML = '<span class="closed">Closed</span>, ' + next; }
+      if(addr){ addr.textContent = "Closed, " + next; }
+    }
+  }
+  openStatus();
+  setInterval(openStatus, 60000);
+
+  /* ---- booking form: inline confirmation, no backend ---- */
+  var form = document.getElementById("bookForm");
+  var okBox = document.getElementById("formOk");
+  if(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var name = document.getElementById("fName").value.trim();
+      var contact = document.getElementById("fContact").value.trim();
+      var msg = document.getElementById("fMsg").value.trim();
+
+      if(!name || !contact || !msg){
+        okBox.className = "form-ok show";
+        okBox.style.borderColor = "#b91c1c";
+        okBox.style.background = "#fef2f2";
+        okBox.style.color = "#7f1d1d";
+        okBox.textContent = "Please fill in your name, a phone number or email, and a short message.";
+        return;
+      }
+
+      var ref = "FX-" + String(Date.now()).slice(-6);
+      okBox.style.borderColor = "#16a34a";
+      okBox.style.background = "#f0fdf4";
+      okBox.style.color = "#14532d";
+      okBox.className = "form-ok show";
+      okBox.innerHTML = "Thank you, " + name.replace(/</g,"&lt;") + ". Your request has been noted as <b>" + ref + "</b>. " +
+        "We will call you back during opening hours (Mon\u2013Fri 08:00\u201317:00). " +
+        'Need it sooner? Call <a href="tel:+358442399904"><b>+358 44 2399904</b></a>.';
+      form.reset();
+    });
+  }
+
+  /* ---- scroll reveal ---- */
+  var els = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: 0.12});
+    els.forEach(function(el){ io.observe(el); });
+  }else{
+    els.forEach(function(el){ el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
